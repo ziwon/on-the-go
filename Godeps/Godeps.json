@@ -1,0 +1,5 @@
+{
+	"ImportPath": "github.com/patriz/on-the-go",
+	"GoVersion": "go1.2.1",
+	"Deps": []
+}
