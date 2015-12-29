@@ -16,12 +16,12 @@ func integers() chan int {
 	return yield
 }
 
-func generateInteger(resume chan int) int {
+func generateInteger() int {
 	return <-resume
 }
 
 func main() {
-	resume := integers()
+	resume = integers()
 	fmt.Println("generateInteger() -> ", generateInteger())
 	fmt.Println("generateInteger() -> ", generateInteger())
 	fmt.Println("generateInteger() -> ", generateInteger())
