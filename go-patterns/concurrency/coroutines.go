@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+var resume chan int
+
 func integers() chan int {
 	yield := make(chan int)
 	count := 0
@@ -20,8 +22,7 @@ func generateInteger(resume chan int) int {
 
 func main() {
 	resume := integers()
-
-	fmt.Println("generateInteger() -> ", generateInteger(resume))
-	fmt.Println("generateInteger() -> ", generateInteger(resume))
-	fmt.Println("generateInteger() -> ", generateInteger(resume))
+	fmt.Println("generateInteger() -> ", generateInteger())
+	fmt.Println("generateInteger() -> ", generateInteger())
+	fmt.Println("generateInteger() -> ", generateInteger())
 }
