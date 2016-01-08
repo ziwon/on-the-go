@@ -1,7 +1,7 @@
 # On-The-Go
-Let's be on-the-go for studying `Go Programming Languages`: the C language for 21st century that gives us no choice but to fall in love its simplicity and powerful concurreny model provided at the language level.
+Let's be on-the-go for studying **`Go Programming Language`**: the C language for 21st century that gives us no choice but to fall in love its simplicity and powerful concurreny model provided at the language level.
 
-## [The Go Programming Languages](http://www.gopl.io/)
+## [The Go Programming Language](http://www.gopl.io/)
 
 ## [Go by Example](https://gobyexample.com/)
 
