@@ -7,7 +7,7 @@ Let's be on-the-go for studying **`Go Programming Language`**: the C language fo
 
 ### [Design Patterns in Go](https://github.com/monochromegane/go_design_pattern)
 
-### [Go Concurrency](https://projects.felixlab.io/diffusion/GCY/oncurrent)
+### [Go Concurrency](https://projects.felixlab.io/diffusion/GCY/)
 
 ### [Build Webp Application with Golang](https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/index.html)
 
