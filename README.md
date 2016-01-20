@@ -11,7 +11,7 @@ Let's be on-the-go for studying **`Go Programming Language`**: the C language fo
 
 ### [Build Webp Application with Golang](https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/index.html)
 
-### Restful JSON API
+### [Go Restful](https://github.com/emicklei/go-restful)
 
 ### [Network programming with Go](https://jan.newmarch.name/go/)
 
