@@ -1,11 +1,10 @@
 # go-restful
 
-* restful-grettings.go
-* restful-hello-world.go
-* restful-user.service.go
-* restful-serve-static.go
+* restful-hello-world.go (v)
+* restful-user-service.go 
+* restful-serve-static.go (v)
 
-* restful-basic-authentication.go
+* restful-basic-authentication.go (v)
 * restful-filters.go
 * restful-encoding-filters.goc
 * restful-resource-functions.go
@@ -27,7 +26,7 @@
 * restful-NCSA-logging.go
 
 * restful-options-filter.go
-* resful-path-tail.go
+* restful-path-tail.go
 
 * restful-swagger.go
 
