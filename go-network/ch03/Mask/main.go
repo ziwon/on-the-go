@@ -9,11 +9,25 @@ import (
 type IP []byte
 type IPMask []byte
 
+var v4InV6Prefix = []byte{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xff, 0xff}
+
 var (
 	classAMask = IPv4Mask(0xff, 0, 0, 0)
 	classBMask = IPv4Mask(0xff, 0xff, 0, 0)
 	classCMask = IPv4Mask(0xff, 0xff, 0xff, 0)
 )
+
+func bytesEqual(x, y []byte) bool {
+	if len(x) != len(y) {
+		return false
+	}
+	for i, b := range x {
+		if y[i] != b {
+			return false
+		}
+	}
+	return true
+}
 
 func IPv4Mask(a, b, c, d byte) []byte {
 	p := make(IP, 4)
@@ -50,10 +64,12 @@ func allFF(b []byte) bool {
 }
 
 func Mask2(ip net.IP, mask IPMask) net.IP {
-	if len(mask) == 16 && len(ip) == 4 && allFF(mask[:12]) {
+	if len(mask) == net.IPv6len && len(ip) == net.IPv4len && allFF(mask[:12]) {
 		mask = mask[12:]
 	}
-
+	if len(mask) == net.IPv4len && len(ip) == net.IPv6len && bytesEqual(ip[:12], v4InV6Prefix) {
+		ip = ip[12:]
+	}
 	n := len(ip)
 	if n != len(mask) {
 		return nil
@@ -83,6 +99,7 @@ func main() {
 
 	network := addr.Mask(mask)
 	network2 := Mask2(addr, mask2)
+
 	ones, bits := mask.Size()
 	fmt.Println("Address is ", addr.String(),
 		" Default mask length is ", bits,
