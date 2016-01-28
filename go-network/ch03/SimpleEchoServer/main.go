@@ -46,7 +46,7 @@ func dieWhenMeetCtrl(str string) {
 	for i := 0; i < len(str); i++ {
 		c := str[i]
 		if c == 0xff || c == 0xfb {
-			fmt.Println("サヨナラ、出会ったから売れし~")
+			fmt.Println("サヨナラ、出会って嬉しかった")
 			os.Exit(0)
 		}
 	}
