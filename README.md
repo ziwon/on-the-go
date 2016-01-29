@@ -9,7 +9,7 @@ Let's be on-the-go for studying **`Go Programming Language`**: the C language fo
 
 ### [Go Concurrency](https://projects.felixlab.io/diffusion/GCY/)
 
-### [Build Webp Application with Golang](https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/index.html)
+### [Build Web Application with Golang](https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/index.html)
 
 ### [Go Restful](https://github.com/emicklei/go-restful)
 
