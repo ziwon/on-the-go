@@ -4,6 +4,9 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
+	"golang.org/x/net/icmp"
+	"golang.org/x/net/internal/iana"
+	"golang.org/x/net/ipv4"
 	"net"
 	"os"
 	"time"
@@ -37,10 +40,16 @@ func checkSum(msg []byte) uint16 {
 
 func Ping(URL string, Timeout int) bool {
 	addr, err := net.ResolveIPAddr("ip", URL)
-	return checkError(err)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Fatal error: %s\n", err.Error())
+		return false
+	}
 
 	c, err := net.DialIP("ip4:icmp", nil, addr)
-	return checkError(err)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Fatal error: %s\n", err.Error())
+		return false
+	}
 
 	defer c.Close()
 	c.SetDeadline(time.Now().Add(time.Duration(Timeout) * time.Second))
@@ -58,24 +67,70 @@ func Ping(URL string, Timeout int) bool {
 	binary.Write(&buf, binary.BigEndian, icmp)
 
 	count, err := c.Write(buf.Bytes())
-	return checkError(err)
-
-	buffer := make([]uint8, count)
-	count, err = c.Read(buffer)
-	return checkError(err)
-
-	ID := (uint16(buffer[count-4]) << 8) + uint16(buffer[count-3])
-
-	return icmp.icmpID == ID
-}
-
-func checkError(err error) bool {
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Fatal error: %s\n", err.Error())
 		return false
-	} else {
-		return true
 	}
+
+	buffer := make([]uint8, count+20)
+	count, err = c.Read(buffer)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Fatal error: %s\n", err.Error())
+		return false
+	}
+
+	ID := (uint16(buffer[count-4]) << 8) + uint16(buffer[count-3])
+	return icmp.icmpID == ID
+}
+
+func Ping2(URL string, Timeout int) bool {
+	addr, err := net.ResolveIPAddr("ip", URL)
+
+	c, err := icmp.ListenPacket("ip4:icmp", "0.0.0.0")
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Fatal error: %s\n", err.Error())
+		return false
+	}
+
+	defer c.Close()
+	c.SetDeadline(time.Now().Add(time.Duration(Timeout) * time.Second))
+
+	message := icmp.Message{
+		Type: ipv4.ICMPTypeEcho, Code: 0,
+		Body: &icmp.Echo{
+			ID: os.Getpid() & 0xFFFF, Seq: 1,
+			Data: []byte("Hi"),
+		},
+	}
+
+	buf, err := message.Marshal(nil)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Fatal error: %s\n", err.Error())
+		return false
+	}
+	if _, err := c.WriteTo(buf, addr); err != nil {
+		fmt.Fprintf(os.Stderr, "Fatal error: %s\n", err.Error())
+		return false
+	}
+
+	rb := make([]byte, 1500)
+	n, peer, err := c.ReadFrom(rb)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Fatal error: %s\n", err.Error())
+		return false
+	}
+	rm, err := icmp.ParseMessage(iana.ProtocolICMP, rb[:n])
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Fatal error: %s\n", err.Error())
+		return false
+	}
+	switch rm.Type {
+	case ipv4.ICMPTypeEchoReply:
+		fmt.Printf("got reflection from %v", peer)
+	default:
+		fmt.Printf("got %+v; want echo reply", rm)
+	}
+	return true
 }
 
 func main() {
@@ -84,6 +139,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	result := Ping(os.Args[1], 10)
-	fmt.Println("Result", result)
+	result := Ping2(os.Args[1], 20)
+	fmt.Println("Result: ", result)
 }
