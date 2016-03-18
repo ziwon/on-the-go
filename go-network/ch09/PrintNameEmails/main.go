@@ -13,9 +13,10 @@ type Person struct {
 }
 
 const templ = `{{$name := .Name}}
+{{$phone := .Phone}}
 {{range .Emails}}
 		{{$email := .}}
-		Name is {{$name}}, email is {{$email}} - {{.Phone}}
+		Name is {{$name}}, email is {{$email}}, {{$phone}}
 {{end}}
 `
 
