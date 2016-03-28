@@ -19,6 +19,13 @@ func PopCount(x uint64) int {
 		pc[byte(x>>(7*8))])
 }
 
+func PopCountMutiple(x uint) int {
+	x = x - ((x >> 1) & 0x55555555)
+	x = (x & 0x33333333) + ((x >> 2) & 0x33333333)
+	x = (x + (x >> 4)) & 0x0f0f0f0f
+	return (int)((x * 0x01010101) >> 24)
+}
+
 // ex 2.3
 func PopCountLoop(x uint64) int {
 	var sum byte
@@ -47,4 +54,20 @@ func PopCountClearRightmostBit(x uint64) int {
 		x = x & (x - 1)
 	}
 	return sum
+}
+
+func PopCountMultipleBy(x uint) int {
+	x = x - ((x >> 1) & 0x55555555)
+	x = (x & 0x33333333) + ((x >> 2) & 0x33333333)
+	x = (x + (x >> 4)) & 0x0f0f0f0f
+	return (int)((x * 0x01010101) >> 24)
+}
+
+func PopCountAdd(x uint) int {
+	x = (x & 0x55555555) + ((x >> 1) & 0x55555555)
+	x = (x & 0x33333333) + ((x >> 2) & 0x33333333)
+	x = (x & 0x0f0f0f0f) + ((x >> 4) & 0x0f0f0f0f)
+	x = (x & 0x00ff00ff) + ((x >> 8) & 0x00ff00ff)
+	x = (x & 0x0000ffff) + ((x >> 16) & 0x0000ffff)
+	return (int)(x)
 }
