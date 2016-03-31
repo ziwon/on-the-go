@@ -10,7 +10,7 @@ const (
 	cells         = 100
 	xyrange       = 30.0
 	xyscale       = width / 2 / xyrange
-	zscale        = height * 0.4
+	zscale        = height * 0.3
 	angle         = math.Pi / 6
 )
 
@@ -56,6 +56,6 @@ func corner(i, j int) (float64, float64) {
 
 func f(x, y float64) float64 {
 	theta := math.Atan2(y, x)
-	r := 1 + math.Cos(6*theta) // drawing a flower
-	return math.Sin(r) / r
+	r := math.Cos(8 * theta) // drawing a flower
+	return math.Sin(r)
 }
