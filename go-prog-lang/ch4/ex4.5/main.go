@@ -11,11 +11,11 @@ func main() {
 
 func dup(strings []string) []string {
 	out := []string{}
-	m := map[string]string{}
+	m := make(map[string]struct{})
 	for _, s := range strings {
 		if _, ok := m[s]; !ok {
 			out = append(out, s)
-			m[s] = s
+			m[s] = struct{}{}
 		}
 	}
 	return out
