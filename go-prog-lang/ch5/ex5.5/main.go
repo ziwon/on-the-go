@@ -1,10 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"golang.org/x/net/html"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -34,8 +36,10 @@ func CountWordsAndImages(url string) (words, images int, err error) {
 
 func countWordsAndImages(n *html.Node) (words, images int) {
 	var w, i int
-	if n.Type == html.TextNode {
-		w += 1
+
+	if n.Type == html.TextNode && n.Parent.Data != "script" && n.Parent.Data != "style" {
+		// How to count unique words? Well, I don't care.
+		w += countWords(n.Data)
 	}
 
 	if n.Type == html.ElementNode && n.Data == "img" {
@@ -55,4 +59,28 @@ func countWordsAndImages(n *html.Node) (words, images int) {
 	}
 
 	return w, i
+}
+
+func countWords(input string) (count int) {
+	// pre-processing for two length whitespace, new line and tab
+	input = strings.Replace(input, "  ", "", -1)
+	input = strings.Replace(input, "\n", "", -1)
+	input = strings.Replace(input, "\t", "", -1)
+
+	if len(input) == 0 {
+		return 0
+	}
+
+	scanner := bufio.NewScanner(strings.NewReader(input))
+	scanner.Split(bufio.ScanWords)
+
+	for scanner.Scan() {
+		count++
+	}
+	if err := scanner.Err(); err != nil {
+		fmt.Fprintln(os.Stderr, "reading input:", err)
+	}
+
+	fmt.Println(input, count)
+	return count
 }
