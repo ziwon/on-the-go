@@ -35,34 +35,33 @@ func CountWordsAndImages(url string) (words, images int, err error) {
 }
 
 func countWordsAndImages(n *html.Node) (words, images int) {
-	var w, i int
 
 	if n.Type == html.TextNode && n.Parent.Data != "script" && n.Parent.Data != "style" {
-		// How to count unique words? Well, I don't care.
-		w += countWords(n.Data)
+		words += countWords(n.Data)
 	}
 
 	if n.Type == html.ElementNode && n.Data == "img" {
-		i += 1
+		images += 1
 	}
 
 	if n.FirstChild != nil {
-		words, images := countWordsAndImages(n.FirstChild)
-		w += words
-		i += images
+		w, i := countWordsAndImages(n.FirstChild)
+		words += w
+		images += i
 	}
 
 	if n.NextSibling != nil {
-		words, images := countWordsAndImages(n.NextSibling)
-		w += words
-		i += images
+		w, i := countWordsAndImages(n.NextSibling)
+		words += w
+		images += i
 	}
 
-	return w, i
+	return
 }
 
+// How to count unique words? Well, I don't care.
 func countWords(input string) (count int) {
-	// pre-processing for two length whitespace, new line and tab
+	// pre-processing for two length whitespaces, new line and tab
 	input = strings.Replace(input, "  ", "", -1)
 	input = strings.Replace(input, "\n", "", -1)
 	input = strings.Replace(input, "\t", "", -1)
@@ -82,5 +81,5 @@ func countWords(input string) (count int) {
 	}
 
 	fmt.Println(input, count)
-	return count
+	return
 }
