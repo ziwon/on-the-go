@@ -13,7 +13,7 @@ Let's be on-the-go for studying **`Go Programming Language`**
 
 ### [Go Restful](https://github.com/emicklei/go-restful)
 
-### [Iris Examples](https://github.com/iris-contrib/examples)
+### [FastHttp Echo](https://github.com/labstack/echo)
 
 ### [Network programming with Go](https://jan.newmarch.name/go/)
 
