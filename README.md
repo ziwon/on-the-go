@@ -11,8 +11,6 @@ Let's be on-the-go for studying **`Go Programming Language`**
 
 ### [Build Web Application with Golang](https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/index.html)
 
-### [Go Restful](https://github.com/emicklei/go-restful)
-
 ### [FastHttp Echo](https://github.com/labstack/echo)
 
 ### [Network programming with Go](https://jan.newmarch.name/go/)
