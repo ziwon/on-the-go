@@ -6,7 +6,7 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/patriz/on-the-go/go-prog-lang/ch4/github_issues"
+	"github.com/ziwon/on-the-go/go-prog-lang/ch4/github_issues"
 )
 
 const templ = `{{.TotalCount}} issues:

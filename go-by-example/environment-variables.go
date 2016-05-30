@@ -70,10 +70,10 @@ MDMSESSION mate
 MDM_LANG en_US.UTF-8
 MDM_XSERVER_LOCATION local
 NODE_PATH /usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript
-OLDPWD /home/luno/Workspace/On-The-Go/src/github.com/patriz/on-the-go
+OLDPWD /home/luno/Workspace/On-The-Go/src/github.com/ziwon/on-the-go
 PAGER less
 PATH /usr/local/bin:/usr/local/sbin:/usr/local/rbenv/shims:/usr/local/rbenv/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
-PWD /home/luno/Workspace/On-The-Go/src/github.com/patriz/on-the-go/go-by-example
+PWD /home/luno/Workspace/On-The-Go/src/github.com/ziwon/on-the-go/go-by-example
 PYTHONPATH /usr/lib/llvm-3.6/lib/python2.7/site-packages
 QT4_IM_MODULE uim
 QT_IM_MODULE xim

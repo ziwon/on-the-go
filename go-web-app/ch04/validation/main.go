@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/patriz/on-the-go/go-web-app/ch04/validation/validator"
+	"github.com/ziwon/on-the-go/go-web-app/ch04/validation/validator"
 	"html/template"
 	"log"
 	"net/http"

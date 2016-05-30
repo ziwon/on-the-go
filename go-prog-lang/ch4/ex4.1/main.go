@@ -3,7 +3,7 @@ package main
 import (
 	"crypto/sha256"
 	"fmt"
-	"github.com/patriz/on-the-go/go-prog-lang/ch2/popcount"
+	"github.com/ziwon/on-the-go/go-prog-lang/ch2/popcount"
 )
 
 func main() {

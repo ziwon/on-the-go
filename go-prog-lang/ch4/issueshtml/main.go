@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/patriz/on-the-go/go-prog-lang/ch4/github_issues"
+	"github.com/ziwon/on-the-go/go-prog-lang/ch4/github_issues"
 )
 
 var issueList = template.Must(template.New("issuelist").Parse(`

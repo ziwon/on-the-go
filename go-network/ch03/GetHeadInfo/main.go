@@ -8,7 +8,7 @@ import (
 )
 
 /*
-╭─ luno@optimus   ~GOPATH/src/github.com/patriz/on-the-go/go-network/ch03/GetHeadInfo     4134b0 master   ✓ 
+╭─ luno@optimus   ~GOPATH/src/github.com/ziwon/on-the-go/go-network/ch03/GetHeadInfo     4134b0 master   ✓ 
 ╰─ ./GetHeadInfo www.naver.com:80
 HTTP/1.1 200 OK
 Server: nginx
@@ -21,7 +21,7 @@ P3P: CP="CAO DSP CURa ADMa TAIa PSAa OUR LAW STP PHY ONL UNI PUR FIN COM NAV INT
 X-Frame-Options: SAMEORIGIN
 
 
-╭─ luno@optimus   ~GOPATH/src/github.com/patriz/on-the-go/go-network/ch03/GetHeadInfo     4134b0 master   ✓ 
+╭─ luno@optimus   ~GOPATH/src/github.com/ziwon/on-the-go/go-network/ch03/GetHeadInfo     4134b0 master   ✓ 
 ╰─ ./GetHeadInfo www.google.com:80
 HTTP/1.0 302 Found
 Cache-Control: private
@@ -32,7 +32,7 @@ Date: Wed, 27 Jan 2016 15:35:03 GMT
 Server: GFE/2.0
 
 
-╭─ luno@optimus   ~GOPATH/src/github.com/patriz/on-the-go/go-network/ch03/GetHeadInfo     4134b0 master   ✓ 
+╭─ luno@optimus   ~GOPATH/src/github.com/ziwon/on-the-go/go-network/ch03/GetHeadInfo     4134b0 master   ✓ 
 ╰─ ./GetHeadInfo www.facebook.com:80
 HTTP/1.1 302 Found
 Location: http://31.13.68.35/unsupportedbrowser

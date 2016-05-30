@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/patriz/on-the-go/go-prog-lang/ch2/tempconv"
+	"github.com/ziwon/on-the-go/go-prog-lang/ch2/tempconv"
 	"os"
 	"strconv"
 )

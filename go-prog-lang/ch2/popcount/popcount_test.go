@@ -1,7 +1,7 @@
 package popcount_test
 
 import (
-	"github.com/patriz/on-the-go/go-prog-lang/ch2/popcount"
+	"github.com/ziwon/on-the-go/go-prog-lang/ch2/popcount"
 	"testing"
 )
 
@@ -50,5 +50,5 @@ BenchmarkPopCountShnft64-4              100000000               18.2 ns/op
 BenchmarkPopCountClearRightmostBit-4    100000000               18.7 ns/op
 BenchmarkPopCountMultipleBy-4           1000000000               2.33 ns/op
 BenchmarkPopCountAdd-4                  300000000                4.05 ns/op
-ok      github.com/patriz/on-the-go/go-prog-lang/ch2/popcount   7.423s
+ok      github.com/ziwon/on-the-go/go-prog-lang/ch2/popcount   7.423s
 */
