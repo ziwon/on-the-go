@@ -1,5 +1,4 @@
 # On-The-Go
-Let's be on-the-go for studying **`Go Programming Language`**
 
 ### [The Go Programming Language](http://www.gopl.io/)
 
@@ -16,5 +15,3 @@ Let's be on-the-go for studying **`Go Programming Language`**
 ### [Network programming with Go](https://jan.newmarch.name/go/)
 
 ### [Native GUI library for Go](https://github.com/andlabs/ui)
-
-### Functional Go
