@@ -10,7 +10,7 @@
 
 ### [Build Web Application with Golang](https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/index.html)
 
-### [FastHttp Echo](https://github.com/labstack/echo)
+### [FastHttp Iris](https://github.com/kataras/iris), [FastHttp Echo](https://github.com/labstack/echo)
 
 ### [Network programming with Go](https://jan.newmarch.name/go/)
 
