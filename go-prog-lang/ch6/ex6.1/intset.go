@@ -75,3 +75,28 @@ func (s *IntSet) Len() int {
 
 	return len
 }
+
+func (s *IntSet) Remove(x int) {
+	word, bit := x/64, uint(x%64)
+	s.words[word] &= ^(1 << bit)
+}
+
+func (s *IntSet) Clear() {
+	for i, word := range s.words {
+		if word == 0 {
+			continue
+		}
+
+		for j := 0; j < 64; j++ {
+			if word&(1<<uint(j)) != 0 {
+				s.words[i] &= ^(1 << uint(j))
+			}
+		}
+	}
+}
+
+func (s *IntSet) Copy() *IntSet {
+	t := IntSet{}
+	t.words = append([]uint64(nil), s.words...)
+	return &t
+}
