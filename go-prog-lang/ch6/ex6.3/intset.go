@@ -122,3 +122,26 @@ func (s *IntSet) IntersectWith(t *IntSet) {
 		}
 	}
 }
+
+// ex6.3
+func (s *IntSet) DifferenceWith(t *IntSet) {
+	for i := range s.words {
+		if i < len(t.words) {
+			s.words[i] &^= t.words[i]
+		} else {
+			s.words[i] &= ^(1 << uint(i))
+		}
+	}
+
+}
+
+// ex6.3
+func (s *IntSet) SymmetricDifference(t *IntSet) {
+	for i := range s.words {
+		if i < len(t.words) {
+			s.words[i] ^= t.words[i]
+		} else {
+			s.words[i] &= ^(1 << uint(i))
+		}
+	}
+}
