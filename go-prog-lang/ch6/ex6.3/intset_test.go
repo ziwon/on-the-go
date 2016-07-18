@@ -3,7 +3,7 @@ package intset
 import "testing"
 import "fmt"
 
-func TestIntersectWith(t *testing.T) {
+func TestIntersectWith1(t *testing.T) {
 	var x, y IntSet
 
 	x.Add(1)
@@ -19,7 +19,25 @@ func TestIntersectWith(t *testing.T) {
 	if !x.Has(3) || !x.Has(244) || x.Len() != 2 {
 		t.Error("Fail")
 	} else {
-		fmt.Printf("IntersectWith: %s\n", x.String())
+		fmt.Printf("IntersectWith1: %s\n", x.String())
+	}
+}
+
+func TestIntersectWith2(t *testing.T) {
+	var x, y IntSet
+
+	x.Add(1)
+	x.Add(244)
+
+	y.Add(244)
+	y.Add(4)
+	y.Add(144)
+
+	x.IntersectWith(&y)
+	if !x.Has(244) || x.Len() != 1 {
+		t.Error("Fail")
+	} else {
+		fmt.Printf("IntersectWith2: %s\n", x.String())
 	}
 }
 

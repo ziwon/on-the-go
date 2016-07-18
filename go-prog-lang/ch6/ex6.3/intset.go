@@ -115,22 +115,14 @@ func (s *IntSet) AddAll(list ...int) {
 // ex6.3
 func (s *IntSet) IntersectWith(t *IntSet) {
 	for i := range s.words {
-		if i < len(t.words) {
-			s.words[i] &= t.words[i]
-		} else {
-			s.words[i] &= ^(1 << uint(i))
-		}
+		s.words[i] &= t.words[i]
 	}
 }
 
 // ex6.3
 func (s *IntSet) DifferenceWith(t *IntSet) {
 	for i := range s.words {
-		if i < len(t.words) {
-			s.words[i] &^= t.words[i]
-		} else {
-			s.words[i] &= ^(1 << uint(i))
-		}
+		s.words[i] &^= t.words[i]
 	}
 
 }
@@ -138,10 +130,6 @@ func (s *IntSet) DifferenceWith(t *IntSet) {
 // ex6.3
 func (s *IntSet) SymmetricDifference(t *IntSet) {
 	for i := range s.words {
-		if i < len(t.words) {
-			s.words[i] ^= t.words[i]
-		} else {
-			s.words[i] &= ^(1 << uint(i))
-		}
+		s.words[i] ^= t.words[i]
 	}
 }
