@@ -17,7 +17,8 @@ func (r *LimitReader) Read(p []byte) (n int, err error) {
 	if r.n >= int64(len(p)) {
 		return 0, io.EOF
 	}
-	return copy(p, p[:r.n]), io.EOF
+	n, _ = r.r.Read(p[:r.n])
+	return n, io.EOF
 }
 
 // ex7.5 Change function name to NewLimitReader from LimitReader to use it for struct type
