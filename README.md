@@ -6,6 +6,10 @@
 
 ### [Design Patterns in Go](https://github.com/monochromegane/go_design_pattern)
 
+### Data Structures
+ - [gods](https://github.com/emirpasic/gods)
+ - [Workiva](https://github.com/Workiva/go-datastructures)
+
 ### [Go Concurrency](https://projects.felixlab.io/diffusion/GCY/)
 
 ### [Build Web Application with Golang](https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/index.html)
