@@ -34,7 +34,7 @@ func length(s string) time.Duration {
 
 func printTracks(tracks []*Track) {
 	const format = "%v\t%v\t%v\t%v\t%v\t\n"
-	tw := new(tabwriter.Writer).Init(os.Stdout, 0, 8, 2, ' ', 0)
+	tw := new(tabwriter.Writer).Init(os.Stdout, 0, 2, 2, ' ', 0)
 	fmt.Fprintf(tw, format, "Title", "Artist", "Album", "Year", "Length")
 	fmt.Fprintf(tw, format, "-----", "------", "-----", "----", "------")
 	for _, t := range tracks {
@@ -108,34 +108,33 @@ func main() {
 }
 
 /**
-
 byArtist:
-Title                              Artist           Album               Year  Length
------                              ------           -----               ----  ------
+Title                              Artist           Album                     Year  Length
+-----                              ------           -----                     ----  ------
 Prelude Op.28-15 RainDrop          F.F.Chopin       CASIO GP500 CONSERT PLAY  1992  3m37s
 Canon                              J.Pachelbel      CASIO GP500 CONSERT PLAY  2007  4m36s
 Jesus, Bleibet Meine Freude        J.S.Bach         CASIO GP500 CONSERT PLAY  2011  4m24s
 Piano Concerto No.1 Op.23 1st Mov  P.I.Tchaikovsky  CASIO GP500 CONSERT PLAY  2012  3m38s
 
 Reverse(byArtist):
-Title                              Artist           Album               Year  Length
------                              ------           -----               ----  ------
+Title                              Artist           Album                     Year  Length
+-----                              ------           -----                     ----  ------
 Piano Concerto No.1 Op.23 1st Mov  P.I.Tchaikovsky  CASIO GP500 CONSERT PLAY  2012  3m38s
 Jesus, Bleibet Meine Freude        J.S.Bach         CASIO GP500 CONSERT PLAY  2011  4m24s
 Canon                              J.Pachelbel      CASIO GP500 CONSERT PLAY  2007  4m36s
 Prelude Op.28-15 RainDrop          F.F.Chopin       CASIO GP500 CONSERT PLAY  1992  3m37s
 
 byYear:
-Title                              Artist           Album               Year  Length
------                              ------           -----               ----  ------
+Title                              Artist           Album                     Year  Length
+-----                              ------           -----                     ----  ------
 Prelude Op.28-15 RainDrop          F.F.Chopin       CASIO GP500 CONSERT PLAY  1992  3m37s
 Canon                              J.Pachelbel      CASIO GP500 CONSERT PLAY  2007  4m36s
 Jesus, Bleibet Meine Freude        J.S.Bach         CASIO GP500 CONSERT PLAY  2011  4m24s
 Piano Concerto No.1 Op.23 1st Mov  P.I.Tchaikovsky  CASIO GP500 CONSERT PLAY  2012  3m38s
 
 Custom:
-Title                              Artist           Album               Year  Length
------                              ------           -----               ----  ------
+Title                              Artist           Album                     Year  Length
+-----                              ------           -----                     ----  ------
 Canon                              J.Pachelbel      CASIO GP500 CONSERT PLAY  2007  4m36s
 Jesus, Bleibet Meine Freude        J.S.Bach         CASIO GP500 CONSERT PLAY  2011  4m24s
 Piano Concerto No.1 Op.23 1st Mov  P.I.Tchaikovsky  CASIO GP500 CONSERT PLAY  2012  3m38s
