@@ -15,7 +15,7 @@ type Container interface {
 	Values() []interface{}
 }
 
-func GetSortedValues(container Container, compartor utils.Comparator) []interface{} {
+func GetSortedValues(container Container, comparator utils.Comparator) []interface{} {
 	values := container.Values()
 	if len(values) < 2 {
 		return values
