@@ -10,7 +10,10 @@
  - [gods](https://github.com/emirpasic/gods)
  - [Workiva](https://github.com/Workiva/go-datastructures)
 
-### [Go Concurrency](https://projects.felixlab.io/diffusion/GCY/)
+### Concurrency
+ - [Fundamentals of concurrent programming](http://www.nada.kth.se/~snilsson/concurrency/)
+ - [Go Concurrency](https://projects.felixlab.io/diffusion/GCY/)
+ - [GO, Concurrent and Systems Programming](https://www.cs.rit.edu/~ats/go-2011-2/index.xml)
 
 ### [Build Web Application with Golang](https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/index.html)
 
