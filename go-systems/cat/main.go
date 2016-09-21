@@ -17,14 +17,14 @@ func Cat(arg string, f *os.File, opt ...int) (string, error) {
 	buf := make([]byte, bufSize)
 
 	for {
-		switch nr, er := f.Read(buf); {
+		switch nr, err := f.Read(buf); {
 		case nr > 0:
-			if _, ew := os.Stdout.Write(buf[0:nr]); ew != nil {
-				return arg, ew
+			if _, err := os.Stdout.Write(buf[0:nr]); err != nil {
+				return arg, err
 			}
 			continue
-		case er != nil && er != io.EOF:
-			return arg, er
+		case err != nil && err != io.EOF:
+			return arg, err
 		}
 		break
 	}
