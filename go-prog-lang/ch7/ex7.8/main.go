@@ -18,7 +18,7 @@ var tracks = []*Track{
 	{"AA", 2010, "ZZZ"},
 	{"AA", 2005, "YYY"},
 	{"BB", 2002, "ZZZ"},
-	{"BA", 2002, "XXX"},
+	{"BB", 2002, "XXX"},
 	{"BC", 2003, "YYY"},
 	{"CB", 2006, "XXX"},
 	{"CB", 2002, "ZZZ"},
@@ -64,22 +64,22 @@ func NewSort(handlers ...Handler) Chain {
 	return Chain{append(([]Handler)(nil), handlers...)}
 }
 
+func next(i int, h []Handler, x, y *Track) interface{} {
+	if i > len(h)-1 {
+		return false
+	}
+
+	if v := h[i](x, y); v != nil {
+		return v.(bool)
+	} else {
+		i++
+		return next(i, h, x, y)
+	}
+}
+
 func (c Chain) Apply(tracks []*Track) []*Track {
 	sort.Sort(Sortable{tracks, func(x, y *Track) bool {
-		i := 0
-		for {
-			if i > len(c.handlers) {
-				break
-			}
-
-			v := c.handlers[i](x, y)
-			if v == nil {
-				i++
-				return c.handlers[i](x, y).(bool)
-			}
-			return v.(bool)
-		}
-		return false
+		return next(0, c.handlers, x, y).(bool)
 	}})
 	return tracks
 }
@@ -119,17 +119,20 @@ func main() {
 
 	fmt.Println("# sort by year, title, artist")
 	printTracks(NewSort(year, title, artist).Apply(tracks))
+	fmt.Println()
+
+	fmt.Println("# sort by artist, title, year")
+	printTracks(NewSort(artist, title, year).Apply(tracks))
 }
 
 /*
-
 # original
 title  year  artist
 -----  ----  ------
 AA     2010  ZZZ
 AA     2005  YYY
 BB     2002  ZZZ
-BA     2002  XXX
+BB     2002  XXX
 BC     2003  YYY
 CB     2006  XXX
 CB     2002  ZZZ
@@ -142,8 +145,8 @@ title  year  artist
 AA     2005  YYY
 AA     2006  YYY
 AA     2010  ZZZ
-BA     2002  XXX
 BB     2002  ZZZ
+BB     2002  XXX
 BC     2003  YYY
 CB     2002  ZZZ
 CB     2006  XXX
@@ -152,7 +155,7 @@ CB     2007  ZZZ
 # sort by year, title, artist
 title  year  artist
 -----  ----  ------
-BA     2002  XXX
+BB     2002  XXX
 BB     2002  ZZZ
 CB     2002  ZZZ
 BC     2003  YYY
@@ -161,4 +164,17 @@ AA     2006  YYY
 CB     2006  XXX
 CB     2007  ZZZ
 AA     2010  ZZZ
+
+# sort by artist, title, year
+title  year  artist
+-----  ----  ------
+BB     2002  XXX
+CB     2006  XXX
+AA     2005  YYY
+AA     2006  YYY
+BC     2003  YYY
+AA     2010  ZZZ
+BB     2002  ZZZ
+CB     2002  ZZZ
+CB     2007  ZZZ
 */
