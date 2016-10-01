@@ -65,7 +65,7 @@ func NewSort(handlers ...Handler) Chain {
 }
 
 func next(i int, h []Handler, x, y *Track) interface{} {
-	if i > len(h)-1 {
+	if i == len(h)-1 {
 		return false
 	}
 
