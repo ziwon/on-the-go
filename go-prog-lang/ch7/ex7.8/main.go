@@ -5,7 +5,6 @@ import (
 	"os"
 	"sort"
 	"text/tabwriter"
-	"time"
 )
 
 type Track struct {
@@ -24,14 +23,6 @@ var tracks = []*Track{
 	{"CB", 2002, "ZZZ"},
 	{"AA", 2006, "YYY"},
 	{"CB", 2007, "ZZZ"},
-}
-
-func length(s string) time.Duration {
-	d, err := time.ParseDuration(s)
-	if err != nil {
-		panic(s)
-	}
-	return d
 }
 
 func printTracks(tracks []*Track) {
@@ -60,26 +51,28 @@ type Chain struct {
 	handlers []Handler
 }
 
+type Next func(int, []Handler, *Track, *Track) interface{}
+
 func NewSort(handlers ...Handler) Chain {
 	return Chain{append(([]Handler)(nil), handlers...)}
 }
 
-func next(i int, h []Handler, x, y *Track) interface{} {
-	if i == len(h)-1 {
-		return false
-	}
-
-	if v := h[i](x, y); v != nil {
-		return v.(bool)
-	} else {
-		i++
-		return next(i, h, x, y)
-	}
-}
-
 func (c Chain) Apply(tracks []*Track) []*Track {
 	sort.Sort(Sortable{tracks, func(x, y *Track) bool {
-		return next(0, c.handlers, x, y).(bool)
+		var fn Next
+		fn = func(i int, h []Handler, x, y *Track) interface{} {
+			if i > len(h)-1 {
+				return false
+			}
+
+			if v := h[i](x, y); v != nil {
+				return v.(bool)
+			} else {
+				i++
+				return fn(i, h, x, y)
+			}
+		}
+		return fn(0, c.handlers, x, y).(bool)
 	}})
 	return tracks
 }
@@ -126,6 +119,7 @@ func main() {
 }
 
 /*
+
 # original
 title  year  artist
 -----  ----  ------
@@ -177,4 +171,5 @@ AA     2010  ZZZ
 BB     2002  ZZZ
 CB     2002  ZZZ
 CB     2007  ZZZ
+
 */
