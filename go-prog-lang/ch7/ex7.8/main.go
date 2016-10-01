@@ -9,20 +9,21 @@ import (
 )
 
 type Track struct {
-	Title string
-	Year  int
+	Title  string
+	Year   int
+	Artist string
 }
 
 var tracks = []*Track{
-	{"AA", 2010},
-	{"AA", 2005},
-	{"BB", 2002},
-	{"BA", 2002},
-	{"BC", 2003},
-	{"CB", 2006},
-	{"CB", 2002},
-	{"AA", 2006},
-	{"CB", 2007},
+	{"AA", 2010, "ZZZ"},
+	{"AA", 2005, "YYY"},
+	{"BB", 2002, "ZZZ"},
+	{"BA", 2002, "XXX"},
+	{"BC", 2003, "YYY"},
+	{"CB", 2006, "XXX"},
+	{"CB", 2002, "ZZZ"},
+	{"AA", 2006, "YYY"},
+	{"CB", 2007, "ZZZ"},
 }
 
 func length(s string) time.Duration {
@@ -34,12 +35,12 @@ func length(s string) time.Duration {
 }
 
 func printTracks(tracks []*Track) {
-	const format = "%v\t%v\t\n"
+	const format = "%v\t%v\t%v\t\n"
 	tw := new(tabwriter.Writer).Init(os.Stdout, 0, 2, 2, ' ', 0)
-	fmt.Fprintf(tw, format, "title", "year")
-	fmt.Fprintf(tw, format, "-----", "------")
+	fmt.Fprintf(tw, format, "title", "year", "artist")
+	fmt.Fprintf(tw, format, "-----", "----", "------")
 	for _, t := range tracks {
-		fmt.Fprintf(tw, format, t.Title, t.Year)
+		fmt.Fprintf(tw, format, t.Title, t.Year, t.Artist)
 	}
 	tw.Flush()
 }
@@ -65,23 +66,26 @@ func NewSort(handlers ...Handler) Chain {
 
 func (c Chain) Apply(tracks []*Track) []*Track {
 	sort.Sort(Sortable{tracks, func(x, y *Track) bool {
-		for i := 0; i < len(c.handlers)-1; i++ {
+		i := 0
+		for {
+			if i > len(c.handlers) {
+				break
+			}
+
 			v := c.handlers[i](x, y)
-			switch v {
-			case nil:
+			if v == nil {
 				i++
 				return c.handlers[i](x, y).(bool)
 			}
 			return v.(bool)
 		}
 		return false
-
 	}})
 	return tracks
 }
 
 func main() {
-	Title := func(x, y *Track) interface{} {
+	title := func(x, y *Track) interface{} {
 		if x.Title != y.Title {
 			return x.Title < y.Title
 		} else {
@@ -89,9 +93,17 @@ func main() {
 		}
 	}
 
-	Year := func(x, y *Track) interface{} {
+	year := func(x, y *Track) interface{} {
 		if x.Year != y.Year {
 			return x.Year < y.Year
+		} else {
+			return nil
+		}
+	}
+
+	artist := func(x, y *Track) interface{} {
+		if x.Artist != y.Artist {
+			return x.Artist < y.Artist
 		} else {
 			return nil
 		}
@@ -102,9 +114,51 @@ func main() {
 	fmt.Println()
 
 	fmt.Println("# sort by title, year")
-	printTracks(NewSort(Title, Year).Apply(tracks))
+	printTracks(NewSort(title, year).Apply(tracks))
 	fmt.Println()
 
-	fmt.Println("# sort by year, title")
-	printTracks(NewSort(Year, Title).Apply(tracks))
+	fmt.Println("# sort by year, title, artist")
+	printTracks(NewSort(year, title, artist).Apply(tracks))
 }
+
+/*
+
+# original
+title  year  artist
+-----  ----  ------
+AA     2010  ZZZ
+AA     2005  YYY
+BB     2002  ZZZ
+BA     2002  XXX
+BC     2003  YYY
+CB     2006  XXX
+CB     2002  ZZZ
+AA     2006  YYY
+CB     2007  ZZZ
+
+# sort by title, year
+title  year  artist
+-----  ----  ------
+AA     2005  YYY
+AA     2006  YYY
+AA     2010  ZZZ
+BA     2002  XXX
+BB     2002  ZZZ
+BC     2003  YYY
+CB     2002  ZZZ
+CB     2006  XXX
+CB     2007  ZZZ
+
+# sort by year, title, artist
+title  year  artist
+-----  ----  ------
+BA     2002  XXX
+BB     2002  ZZZ
+CB     2002  ZZZ
+BC     2003  YYY
+AA     2005  YYY
+AA     2006  YYY
+CB     2006  XXX
+CB     2007  ZZZ
+AA     2010  ZZZ
+*/
