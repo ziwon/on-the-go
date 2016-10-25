@@ -20,6 +20,7 @@
 ### [FastHttp Iris](https://github.com/kataras/iris), [FastHttp Echo](https://github.com/labstack/echo)
 
 ### [Network programming with Go](https://jan.newmarch.name/go/)
+- [mylg](https://github.com/mehrdadrad/mylg)
 
 ### [Native GUI library for Go](https://github.com/andlabs/ui)
 
