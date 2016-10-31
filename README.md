@@ -19,7 +19,7 @@
 
 ### Graphql
  - [GraphQL-Go](https://github.com/graphql-go/graphql)
- - [GraphQL-Go Playground)(https://github.com/graphql-go/playground)
+ - [GraphQL-Go Playground](https://github.com/graphql-go/playground)
 
 ### [FastHttp Iris](https://github.com/kataras/iris), [FastHttp Echo](https://github.com/labstack/echo)
 
