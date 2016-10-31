@@ -17,6 +17,10 @@
 
 ### [Build Web Application with Golang](https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/index.html)
 
+### Graphql
+ - [GraphQL-Go](https://github.com/graphql-go/graphql)
+ - [GraphQL-Go Playground)(https://github.com/graphql-go/playground)
+
 ### [FastHttp Iris](https://github.com/kataras/iris), [FastHttp Echo](https://github.com/labstack/echo)
 
 ### [Network programming with Go](https://jan.newmarch.name/go/)
