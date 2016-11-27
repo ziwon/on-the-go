@@ -26,7 +26,7 @@ func main() {
 }
 
 func connect(s *server) {
-	conn, err := net.DialTimeout("tcp", s.host, 60*time.Second)
+	conn, err := net.Dial("tcp", s.host)
 	if err != nil {
 		log.Fatal(err)
 	}
