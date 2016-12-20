@@ -31,16 +31,16 @@ func main() {
 		close(done)
 	}()
 
-	fileInfos := make(chan func() (string, int64))
+	fn := make(chan func() (string, int64))
 	var n sync.WaitGroup
 	for _, root := range roots {
 		n.Add(1)
-		go walkDir(root, root, &n, fileInfos)
+		go walkDir(root, root, &n, fn)
 	}
 
 	go func() {
 		n.Wait()
-		close(fileInfos)
+		close(fn)
 	}()
 
 	tick := time.Tick(500 * time.Millisecond)
@@ -51,15 +51,15 @@ loop:
 	for {
 		select {
 		case <-done:
-			for range fileInfos {
+			for range fn {
 				// Do nothing
 			}
 			return
-		case infos, ok := <-fileInfos:
+		case call, ok := <-fn:
 			if !ok {
 				break loop
 			}
-			root, size := infos()
+			root, size := call()
 			nbytes[root] += size
 		case <-tick:
 			printDiskUsage2(nbytes)
@@ -74,7 +74,7 @@ func printDiskUsage2(nbytes map[string]int64) {
 	}
 }
 
-func walkDir(root, dir string, n *sync.WaitGroup, infos chan<- func() (string, int64)) {
+func walkDir(root, dir string, n *sync.WaitGroup, fn chan<- func() (string, int64)) {
 	defer n.Done()
 	if cancelled() {
 		return
@@ -86,7 +86,7 @@ func walkDir(root, dir string, n *sync.WaitGroup, infos chan<- func() (string, i
 			subdir := filepath.Join(dir, entry.Name())
 			go walkDir(root, subdir, n, infos)
 		} else {
-			infos <- (func() (string, int64) { return root, entry.Size() })
+			fn <- (func() (string, int64) { return root, entry.Size() })
 		}
 	}
 }
