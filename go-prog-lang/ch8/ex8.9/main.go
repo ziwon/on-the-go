@@ -9,17 +9,77 @@ import (
 )
 
 /**
-go run main.go /home/luno/Workspace /home/luno/Downloads
-/home/luno/Downloads  17.3 GB
-/home/luno/Workspace  1.2 GB
-/home/luno/Workspace  2.5 GB
-/home/luno/Downloads  17.3 GB
-/home/luno/Downloads  17.3 GB
 /home/luno/Workspace  3.1 GB
-/home/luno/Downloads  17.3 GB
-/home/luno/Workspace  3.9 GB
-/home/luno/Downloads  17.3 GB
+/home/luno/Workspace  3.1 GB
+/usr/  7.3 GB
+/home/luno/Workspace  3.1 GB
+/usr/  7.3 GB
+/home/luno/Workspace  3.1 GB
+/usr/  7.3 GB
+/home/luno/Workspace  3.1 GB
+/usr/  7.3 GB
+/home/luno/Workspace  3.1 GB
+/usr/  7.3 GB
+/home/luno/Workspace  3.1 GB
+/usr/  7.3 GB
+/home/luno/Workspace  3.1 GB
+/usr/  7.4 GB
+/home/luno/Workspace  3.1 GB
+/usr/  7.5 GB
+/home/luno/Workspace  3.1 GB
+/usr/  7.6 GB
+/home/luno/Workspace  3.2 GB
+/usr/  7.6 GB
+/home/luno/Workspace  3.3 GB
+/usr/  7.6 GB
+/home/luno/Workspace  3.3 GB
+/usr/  7.7 GB
+/usr/  7.7 GB
+/home/luno/Workspace  3.4 GB
+/home/luno/Workspace  3.5 GB
+/usr/  7.7 GB
+/home/luno/Workspace  3.5 GB
+/usr/  7.7 GB
+/home/luno/Workspace  3.5 GB
+/usr/  7.7 GB
+/home/luno/Workspace  3.5 GB
+/usr/  7.7 GB
+/home/luno/Workspace  3.5 GB
+/usr/  7.7 GB
+/home/luno/Workspace  3.5 GB
+/usr/  7.7 GB
+/home/luno/Workspace  3.5 GB
+/usr/  7.8 GB
+/home/luno/Workspace  3.5 GB
+/usr/  7.8 GB
+/home/luno/Workspace  3.5 GB
+/usr/  7.8 GB
+/home/luno/Workspace  3.5 GB
+/usr/  7.9 GB
+/usr/  7.9 GB
+/home/luno/Workspace  3.5 GB
+/home/luno/Workspace  3.6 GB
+/usr/  7.9 GB
+/home/luno/Workspace  3.6 GB
+/usr/  8.0 GB
+/home/luno/Workspace  3.7 GB
+/usr/  8.0 GB
+/home/luno/Workspace  3.7 GB
+/usr/  8.0 GB
+/home/luno/Workspace  3.7 GB
+/usr/  8.0 GB
+/home/luno/Workspace  3.7 GB
+/usr/  8.0 GB
+/home/luno/Workspace  3.8 GB
+/usr/  8.0 GB
+/usr/  8.0 GB
+/home/luno/Workspace  3.8 GB
+/home/luno/Workspace  3.8 GB
+/usr/  8.0 GB
 /home/luno/Workspace  4.0 GB
+/usr/  8.0 GB
+/home/luno/Workspace  4.0 GB
+/usr/  8.1 GB
 */
 
 type fileInfo struct {
