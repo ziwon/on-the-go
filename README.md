@@ -32,3 +32,6 @@
 - [Gort](http://gort.io/)
 - [Gobot](https://gobot.io/) - experimental
 
+### The Case for Go
+- [The Case for Go](https://gist.github.com/ungerik/3731476?fref=gc&dti=363044070539745)
+
