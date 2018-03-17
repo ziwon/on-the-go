@@ -1,10 +1,11 @@
 # On-The-Go
 
-### [The Go Programming Language](http://www.gopl.io/)
+### Books
+- [The Go Programming Language](http://www.gopl.io/)
+- [Go by Example](https://gobyexample.com/)
 
-### [Go by Example](https://gobyexample.com/)
-
-### [Design Patterns in Go](https://github.com/monochromegane/go_design_pattern)
+### Design Patterns
+- [Design Patterns in Go](https://github.com/monochromegane/go_design_pattern)
 
 ### Data Structures
  - [gods](https://github.com/emirpasic/gods)
@@ -17,26 +18,34 @@
  - [GO, Concurrent and Systems Programming](https://www.cs.rit.edu/~ats/go-2011-2/index.xml)
 
 ### Performance
-  - [Thoughts on Go performance optimization](https://github.com/dgryski/go-perfbook)
-  - [High performance and scaling techniques in Golang using Go Assembly](https://www.youtube.com/watch?v=HdDOnJKyjhc)
+ - [Thoughts on Go performance optimization](https://github.com/dgryski/go-perfbook)
+ - [High performance and scaling techniques in Golang using Go Assembly](https://www.youtube.com/watch?v=HdDOnJKyjhc)
 
-### [Build Web Application with Golang](https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/index.html)
+### Web
+ - [Build Web Application with Golang](https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/index.html)
 
 ### Graphql
  - [GraphQL-Go](https://github.com/graphql-go/graphql)
  - [GraphQL-Go Playground](https://github.com/graphql-go/playground)
 
-### [FastHttp Iris](https://github.com/kataras/iris), [FastHttp Echo](https://github.com/labstack/echo)
-
-### [Network programming with Go](https://jan.newmarch.name/go/)
+### Network
+- [Network programming with Go](https://jan.newmarch.name/go/)
 - [mylg](https://github.com/mehrdadrad/mylg)
+- [FastHttp](https://github.com/valyala/fasthttp)
+- [FastHttp Iris](https://github.com/kataras/iris)
+- [FastHttp Echo](https://github.com/labstack/echo)
 
-### [Native GUI library for Go](https://github.com/andlabs/ui)
+### GUI
+- [Native GUI library for Go](https://github.com/andlabs/ui)
 
 ### IoT
 - [Gort](http://gort.io/)
 - [Gobot](https://gobot.io/) - experimental
 
-### The Case for Go
+### Benchmarks
+- [Web framework benchmark](https://github.com/smallnest/go-web-framework-benchmark)
+- [Router benchmark](https://github.com/julienschmidt/go-http-routing-benchmark)
+
+### Who uses Golang?
 - [The Case for Go](https://gist.github.com/ungerik/3731476?fref=gc&dti=363044070539745)
 
