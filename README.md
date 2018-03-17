@@ -11,9 +11,14 @@
  - [Workiva](https://github.com/Workiva/go-datastructures)
 
 ### Concurrency
+ - [Concurrency in Go: Tools and Techniques for Developers](https://www.amazon.com/Concurrency-Go-Tools-Techniques-Developers/dp/1491941197)
  - [Fundamentals of concurrent programming](http://www.nada.kth.se/~snilsson/concurrency/)
  - [Go Concurrency](https://projects.felixlab.io/diffusion/GCY/)
  - [GO, Concurrent and Systems Programming](https://www.cs.rit.edu/~ats/go-2011-2/index.xml)
+
+### Performance
+  - [Thoughts on Go performance optimization](https://github.com/dgryski/go-perfbook)
+  - [High performance and scaling techniques in Golang using Go Assembly](https://www.youtube.com/watch?v=HdDOnJKyjhc)
 
 ### [Build Web Application with Golang](https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/index.html)
 
