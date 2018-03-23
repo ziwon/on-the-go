@@ -21,6 +21,9 @@
  - [Thoughts on Go performance optimization](https://github.com/dgryski/go-perfbook)
  - [High performance and scaling techniques in Golang using Go Assembly](https://www.youtube.com/watch?v=HdDOnJKyjhc)
 
+### Blockchain
+ - [Building Blockchain in Go](https://github.com/Jeiwan/blockchain_go)
+ 
 ### Web
  - [Build Web Application with Golang](https://astaxie.gitbooks.io/build-web-application-with-golang/content/en/index.html)
 
