@@ -1,3 +1,0 @@
-[submodule "go-concurrency"]
-	path = go-concurrency
-	url = ssh://git@projects.felixlab.io/diffusion/GCY/go-concurrency.git
