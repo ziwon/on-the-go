@@ -8,6 +8,7 @@
 - [Design Patterns in Go](https://github.com/monochromegane/go_design_pattern)
 
 ### Data Structures
+ - [Data Structures and Algorithms](https://github.com/floyernick/Data-Structures-and-Algorithms)
  - [gods](https://github.com/emirpasic/gods)
  - [Workiva](https://github.com/Workiva/go-datastructures)
 
@@ -49,6 +50,10 @@
 ### Benchmarks
 - [Web framework benchmark](https://github.com/smallnest/go-web-framework-benchmark)
 - [Router benchmark](https://github.com/julienschmidt/go-http-routing-benchmark)
+
+### Translations to Korean
+- [Golang Spec](https://github.com/golangkorea/golang-spec)
+- [Effective Go](https://github.com/golangkorea/effective-go) (My contributions: [Introduction](https://gosudaweb.gitbooks.io/effective-go-in-korean/content/introduction.html), [Concurrency](https://gosudaweb.gitbooks.io/effective-go-in-korean/content/concurrency.html)) ([Published ePub](http://www.realhanbit.co.kr/books/9))
 
 ### Who uses Golang?
 - [The Case for Go](https://gist.github.com/ungerik/3731476?fref=gc&dti=363044070539745)
