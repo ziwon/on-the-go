@@ -9,6 +9,7 @@ import (
 
 
 // Block keeps block headers
+// Nonce is required to verify a proof after having PoW.
 type Block struct {
 	Timestamp int64
 	Data []byte
